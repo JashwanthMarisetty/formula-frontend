@@ -3,20 +3,75 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { FcGoogle } from 'react-icons/fc';
+import { useAuth0 } from "@auth0/auth0-react";
+import useAuthCheck from "../hooks/useAuthCheck"
+import { useEffect } from 'react';
+import { SignUpRoute } from '@/apis';
+import axios from "axios"
 
 const Landing = () => {
+  const { loginWithRedirect, isAuthenticated, user, logout, isLoading , getAccessTokenSilently  } = useAuth0();
+  const { validateLogin } = useAuthCheck();
+
+
+  const registerUser = async () => {
+    if (user && isAuthenticated) {
+      const token = await getAccessTokenSilently();
+      if (localStorage.getItem("userRegistered")) return; 
+
+      try {
+        const response = await axios.post(
+          SignUpRoute,
+          {
+            email: user.email,
+            AuthOid: user.sub,
+            name: user.name,
+          },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        if (response.status === 201) {
+          console.log("User Created:", response.data);
+          localStorage.setItem("userRegistered", "true");
+        } else if (response.status === 300) {
+          console.log("User is null (MULTIPLE_CHOICES)");
+        }
+      } catch (error) {
+        console.error("Error registering user:", error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      registerUser();
+    }
+  }, [isAuthenticated, user]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 to-white">
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="text-xl font-bold text-violet-600">FormMate</div>
           <div className="flex space-x-2">
-            <Link to="/login">
-              <Button variant="outline" className="border-violet-300 text-violet-700 hover:bg-violet-50">Log In</Button>
-            </Link>
-            <Link to="/signup">
+          {!isAuthenticated ? (
+              <Button variant="outline" className="border-violet-300 text-violet-700 hover:bg-violet-50" onClick={() => loginWithRedirect()}>
+                Log In
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                className="border-violet-300 text-violet-700 hover:bg-violet-50"
+                onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+              >
+                Log Out
+              </Button>
+            )}
+            {/* <Link to="/signup">
               <Button className="bg-violet-600 hover:bg-violet-700 text-white">Sign Up</Button>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </header>
@@ -31,11 +86,11 @@ const Landing = () => {
               Build professional forms, surveys and questionnaires without any technical knowledge. Get started for free.
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-3">
-              <Link to="/signup">
+              {/* <Link to="/signup">
                 <Button className="bg-violet-600 hover:bg-violet-700 text-white px-8 py-6">
                   Create Free Account
                 </Button>
-              </Link>
+              </Link> */}
               <Link to="/login">
                 <Button variant="outline" className="border-violet-300 text-violet-700 hover:bg-violet-50 px-8 py-6">
                   View Templates
