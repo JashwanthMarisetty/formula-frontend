@@ -18,17 +18,28 @@ export const FormBuilder: React.FC = () => {
   } = useFormBuilder();
 
   return (
-    <div className={`min-h-screen ${previewMode ? 'bg-gray-50' : 'bg-gray-100'}`}>
+    <div
+      className={`min-h-screen ${previewMode ? "bg-gray-50" : "bg-gray-100"}`}
+    >
       {/* Header - hidden in preview mode */}
       {!previewMode && (
         <header className="bg-violet-600 shadow-sm">
           <div className="flex justify-between items-center px-4 py-3 container mx-auto">
             <div className="flex items-center space-x-4">
-              <div className="text-xl font-bold text-white">FormMate</div>
-              <div className="text-sm font-semibold px-2 py-1 border border-violet-300 text-white rounded-md">Form Builder</div>
+              <a href="http://localhost:8080/">
+                <div className="text-xl font-bold text-white cursor-pointer">
+                  FormMate
+                </div>
+              </a>
             </div>
             <div className="flex items-center space-x-2 text-sm">
-              <div className="text-violet-100">All changes saved at {new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+              <div className="text-violet-100">
+                All changes saved at{" "}
+                {new Date().toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </div>
               <button className="px-3 py-1 border border-violet-400 text-white rounded-md hover:bg-violet-500">
                 Add Collaborators
               </button>
@@ -49,9 +60,13 @@ export const FormBuilder: React.FC = () => {
             <div className="px-6 py-3 font-medium">PUBLISH</div>
             <div className="ml-auto flex items-center px-6">
               <span className="mr-2">Preview Form</span>
-              <button 
+              <button
                 onClick={togglePreviewMode}
-                className={`w-12 h-6 ${previewMode ? 'bg-violet-300' : 'bg-white'} rounded-full p-1 flex items-center ${previewMode ? 'justify-end' : 'justify-start'}`}
+                className={`w-12 h-6 ${
+                  previewMode ? "bg-violet-300" : "bg-white"
+                } rounded-full p-1 flex items-center ${
+                  previewMode ? "justify-end" : "justify-start"
+                }`}
               >
                 <div className="w-4 h-4 bg-violet-600 rounded-full"></div>
               </button>
@@ -61,7 +76,7 @@ export const FormBuilder: React.FC = () => {
       )}
 
       {/* Preview Mode Toggle - always visible */}
-      <div className={`container mx-auto ${previewMode ? 'py-4' : ''}`}>
+      <div className={`container mx-auto ${previewMode ? "py-4" : ""}`}>
         {previewMode && (
           <div className="flex justify-end mb-4">
             <button
@@ -75,7 +90,7 @@ export const FormBuilder: React.FC = () => {
         )}
 
         {/* Main Content */}
-        <div className={`${previewMode ? '' : 'py-6'}`}>
+        <div className={`${previewMode ? "" : "py-6"}`}>
           <div className="flex">
             {/* Left sidebar toggle button - hidden in preview mode */}
             {!previewMode && (
@@ -89,22 +104,26 @@ export const FormBuilder: React.FC = () => {
                 </button>
               </div>
             )}
-            
+
             {/* Form content */}
-            <div className={`flex-1 relative ${previewMode ? 'max-w-3xl mx-auto' : ''}`}>
+            <div
+              className={`flex-1 relative ${
+                previewMode ? "max-w-3xl mx-auto" : ""
+              }`}
+            >
               {!previewMode && (
                 <div className="mb-8 text-center text-gray-500 border-b border-dashed pb-4">
                   + ADD YOUR LOGO
                 </div>
               )}
-              
+
               {pages.map((_, index) => (
                 <FormPage key={index} pageIndex={index} />
               ))}
-              
+
               {/* Add new page button - hidden in preview mode */}
               {!previewMode && (
-                <button 
+                <button
                   className="w-full py-3 border border-dashed border-gray-300 text-gray-500 hover:bg-gray-50 rounded-md mb-8"
                   onClick={addPage}
                 >

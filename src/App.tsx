@@ -10,14 +10,14 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
-
+import { useAuth0 } from "@auth0/auth0-react";
 const queryClient = new QueryClient();
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   
-  if (!isLoggedIn) {
-    return <Navigate to="/landing" replace />;
+  const { isAuthenticated } = useAuth0();
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />;
   }
   
   return <>{children}</>;
