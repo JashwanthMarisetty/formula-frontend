@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { Plus, Eye, EyeOff, Trash } from 'lucide-react';
 import { useFormBuilder } from '@/context/FormBuilderContext';
 import { ElementsSidebar } from './ElementsSidebar';
 import { FormPage } from './FormPage';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 export const FormBuilder: React.FC = () => {
   const { 
@@ -56,7 +56,9 @@ export const FormBuilder: React.FC = () => {
         <div className="bg-gradient-to-r from-violet-500 to-purple-600 text-white">
           <div className="container mx-auto flex">
             <div className="px-6 py-3 font-medium bg-purple-600">BUILD</div>
-            <div className="px-6 py-3 font-medium">USE CONDITIONS</div>
+            <Link to="/use-conditions" className="px-6 py-3 font-medium hover:bg-purple-700">
+              USE CONDITIONS
+            </Link>
             <div className="px-6 py-3 font-medium">PUBLISH</div>
             <div className="ml-auto flex items-center px-6">
               <span className="mr-2">Preview Form</span>
