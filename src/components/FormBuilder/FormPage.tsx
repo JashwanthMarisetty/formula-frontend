@@ -1,7 +1,9 @@
-
 import React from 'react';
 import { FormElement } from './FormElement';
 import { useFormBuilder } from '@/context/FormBuilderContext';
+import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
+
 
 interface FormPageProps {
   pageIndex: number;
@@ -14,6 +16,39 @@ export const FormPage: React.FC<FormPageProps> = ({ pageIndex }) => {
   if (pageIndex !== currentPageIndex) {
     return null;
   }
+  const {user,isAuthenticated} = useAuth0();
+
+  const handleSubmit = async () => {
+    const formTemplate = {
+      title: "Sample Form Title",
+      description: "This is a sample description.",
+      ownerId: user.sub,
+      fields: page.elements.map((element) => {
+        const label = element.content?.title || 'Untitled';
+        const type = element.type;
+  
+        return {
+          id: element.id,
+          label: label,
+          type: type,
+          required: false, 
+          options: ['single_choice', 'multiple_choice'].includes(type)
+            ? element.content?.options || []
+            : undefined,
+        };
+      }),
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:5002/public/forms', formTemplate);
+      console.log('Form submitted:', response.data);
+      alert('Form submitted successfully!');
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Submission failed');
+    }
+  };
+  
 
   return (
     <div className={`bg-white shadow-md rounded-md w-full max-w-3xl mx-auto mb-8 relative ${previewMode ? 'p-0' : ''}`}>
@@ -22,13 +57,13 @@ export const FormPage: React.FC<FormPageProps> = ({ pageIndex }) => {
           Page {pageIndex + 1}
         </div>
       )}
-      
+
       {!previewMode && (
         <div className="p-6 border-b border-gray-200">
           <h1 className="text-2xl font-bold text-gray-800">FormMate</h1>
         </div>
       )}
-      
+
       <div className="p-6">
         {page.elements.length > 0 ? (
           page.elements.map((element) => (
@@ -48,10 +83,13 @@ export const FormPage: React.FC<FormPageProps> = ({ pageIndex }) => {
           )
         )}
       </div>
-      
+
       {page.elements.length > 0 && (
         <div className="p-6 flex justify-center">
-          <button className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2 rounded-md">
+          <button
+            className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2 rounded-md"
+            onClick={handleSubmit}
+          >
             Submit
           </button>
         </div>
