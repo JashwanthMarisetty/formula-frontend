@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +9,7 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
+import DynamicForm from "./components/FormBuilder/use-conditions";
 import { useAuth0 } from "@auth0/auth0-react";
 import FillFormPage from "./pages/FillFormPage";
 const queryClient = new QueryClient();
@@ -54,6 +54,7 @@ const App = () => {
 
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/use-conditions" element={<DynamicForm />} />
             <Route path="/forms" element={
               <ProtectedRoute>
                 <Index />

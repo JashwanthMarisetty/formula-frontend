@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { FcGoogle } from "react-icons/fc";
 import { useAuth0 } from "@auth0/auth0-react";
 import useAuthCheck from "../hooks/useAuthCheck";
-import { useEffect } from "react";
 import { SignUpRoute } from "@/apis";
 import axios from "axios";
 
@@ -165,7 +163,7 @@ const Landing = () => {
               <p className="text-gray-600">
                 Make downloadable mobile apps with no coding.
               </p>
-            </div>
+            </Link>
           </div>
         </div>
       </main>
