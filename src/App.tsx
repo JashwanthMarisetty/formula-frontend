@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
 import { useAuth0 } from "@auth0/auth0-react";
+import FillFormPage from "./pages/FillFormPage";
 const queryClient = new QueryClient();
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -49,6 +50,8 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Landing />} />
+            <Route path="/form/id/:formId" element={<FillFormPage />} />
+
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/forms" element={
@@ -57,6 +60,7 @@ const App = () => {
               </ProtectedRoute>
             } />
             <Route path="*" element={<NotFound />} />
+            
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
