@@ -60,7 +60,7 @@ export const FormPage: React.FC<FormPageProps> = ({ pageIndex }) => {
 
       {!previewMode && (
         <div className="p-6 border-b border-gray-200">
-          <h1 className="text-2xl font-bold text-gray-800">FormMate</h1>
+          <h1 className="text-2xl font-bold text-gray-800">Formula</h1>
         </div>
       )}
 

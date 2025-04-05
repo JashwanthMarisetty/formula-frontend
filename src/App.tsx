@@ -36,7 +36,7 @@ const App = () => {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-violet-50">
-        <div className="text-violet-600 animate-pulse text-xl font-medium">Loading FormMate...</div>
+        <div className="text-violet-600 animate-pulse text-xl font-medium">Loading Formula...</div>
       </div>
     );
   }
