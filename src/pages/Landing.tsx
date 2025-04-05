@@ -30,7 +30,7 @@ const Landing = () => {
             name: user.name,
           },
           {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: { Authorization: `Bearer ${token}`},
           }
         );
 
@@ -116,7 +116,7 @@ const Landing = () => {
           </div>
           <div className="lg:w-1/2">
             <img
-              src="/MyImages/b74117c5-560f-4ec6-8e28-cb1706e8d498.png"
+              src="/MyImages/image.png"
               alt="FormMate Interface"
               className="rounded-lg shadow-2xl"
             />
@@ -125,41 +125,41 @@ const Landing = () => {
 
         <div className="py-16">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
-            Your recent forms!!
+            How would you like to start?
           </h2>
           <div className="grid md:grid-cols-4 gap-8">
-            <Link to="/form-1" className="bg-white p-6 rounded-lg shadow-md text-center">
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="h-12 w-12 bg-violet-100 text-violet-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                {/* Icon for Form-1 */}
+                {/* Icon for Form */}
               </div>
-              <h3 className="text-xl font-semibold mb-2">Form-1</h3>
+              <h3 className="text-xl font-semibold mb-2">Form</h3>
               <p className="text-gray-600">
                 Create forms with logic, payments, and automation.
               </p>
-            </Link>
-            <Link to="/form-2" className="bg-white p-6 rounded-lg shadow-md text-center">
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="h-12 w-12 bg-violet-100 text-violet-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                {/* Icon for Form-2 */}
+                {/* Icon for AI Agent */}
               </div>
-              <h3 className="text-xl font-semibold mb-2">Form-2</h3>
+              <h3 className="text-xl font-semibold mb-2">AI Agent</h3>
               <p className="text-gray-600">
                 Create trained agents to guide users and answer questions.
               </p>
-            </Link>
-            <Link to="/form-3" className="bg-white p-6 rounded-lg shadow-md text-center">
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="h-12 w-12 bg-violet-100 text-violet-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                {/* Icon for Form-3 */}
+                {/* Icon for Workflow */}
               </div>
-              <h3 className="text-xl font-semibold mb-2">Form-3</h3>
+              <h3 className="text-xl font-semibold mb-2">Workflow</h3>
               <p className="text-gray-600">
                 Easily automate workflows and streamline approvals.
               </p>
-            </Link>
-            <Link to="/form-4" className="bg-white p-6 rounded-lg shadow-md text-center">
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="h-12 w-12 bg-violet-100 text-violet-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                {/* Icon for Form-4 */}
+                {/* Icon for App */}
               </div>
-              <h3 className="text-xl font-semibold mb-2">Form-4</h3>
+              <h3 className="text-xl font-semibold mb-2">App</h3>
               <p className="text-gray-600">
                 Make downloadable mobile apps with no coding.
               </p>
