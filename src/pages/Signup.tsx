@@ -44,12 +44,12 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 to-white flex flex-col justify-center items-center p-4">
-      <Link to="/" className="text-xl font-bold text-violet-600 mb-8">FormMate</Link>
+      <Link to="/" className="text-xl font-bold text-violet-600 mb-8">Formula</Link>
       
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl text-center">Create your account</CardTitle>
-          <CardDescription className="text-center">Enter your details to get started with FormMate</CardDescription>
+          <CardDescription className="text-center">Enter your details to get started with Formula</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSignup} className="space-y-4">

@@ -179,7 +179,7 @@ export const FormBuilderProvider: React.FC<{ children: React.ReactNode }> = ({ c
     });
 
     setSelectedElement(newElement);
-    setSidebarOpen(false);
+    // setSidebarOpen(false);
   };
 
   const removeElement = (id: string) => {

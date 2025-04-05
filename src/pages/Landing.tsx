@@ -59,7 +59,7 @@ const Landing = () => {
     <div className="min-h-screen bg-gradient-to-b from-violet-50 to-white">
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="text-xl font-bold text-violet-600">FormMate</div>
+          <div className="text-xl font-bold text-violet-600">Formula</div>
           <div className="flex space-x-2">
             {!isAuthenticated ? (
               <Button
@@ -92,7 +92,7 @@ const Landing = () => {
           <div className="lg:w-1/2 space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
               Create beautiful forms in minutes with{" "}
-              <span className="text-violet-600">FormMate</span>
+              <span className="text-violet-600">Formula</span>
             </h1>
             <p className="text-lg text-gray-600">
               Build professional forms, surveys and questionnaires without any
@@ -127,8 +127,8 @@ const Landing = () => {
           </div>
           <div className="lg:w-1/2">
             <img
-              src="/MyImages/b74117c5-560f-4ec6-8e28-cb1706e8d498.png"
-              alt="FormMate Interface"
+              src="/MyImages/image.png"
+              alt="Formula Interface"
               className="rounded-lg shadow-2xl"
             />
           </div>
@@ -136,7 +136,7 @@ const Landing = () => {
 
         <div className="py-16">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
-            Why choose FormMate?
+            Why choose Formula?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
@@ -162,7 +162,7 @@ const Landing = () => {
                 drag-and-drop builder.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            {/* <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="h-12 w-12 bg-violet-100 text-violet-600 rounded-lg flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -184,7 +184,7 @@ const Landing = () => {
                 Choose from our library of professionally designed templates for
                 any purpose.
               </p>
-            </div>
+            </div> */}
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="h-12 w-12 bg-violet-100 text-violet-600 rounded-lg flex items-center justify-center mb-4">
                 <svg
@@ -215,7 +215,7 @@ const Landing = () => {
       <footer className="bg-gray-100 border-t">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center text-gray-500 text-sm">
-            © {new Date().getFullYear()} FormMate. All rights reserved.
+            © {new Date().getFullYear()} Formula. All rights reserved.
           </div>
         </div>
       </footer>
